@@ -36,7 +36,7 @@ def connect_websocket(socket_url, auth_token):
             message_data = json.loads(message)
 
             if message_data['type'] == 'question':
-                question = message_data['type']
+                question = message_data['question']
 
                 open_browser(question)
 
@@ -63,12 +63,16 @@ def get_auth_token():
 
 if __name__ == '__main__':
 
-    input('Press enter to start : ')
+    input('Press enter to start ')
     if show_active():
         url = get_socket_url()
         print('Connecting to Socket : {}'.format(url))
 
         token = get_auth_token()
         if token == 'NONE':
-            print()
-        connect_websocket(url, token)
+            print('Please enter a valid auth token.')
+        else:
+            connect_websocket(url, token)
+
+    else:
+        print('Show is not active. Try again later!')
