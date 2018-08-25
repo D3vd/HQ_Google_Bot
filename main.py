@@ -37,7 +37,8 @@ def connect_websocket(socket_url, auth_token):
 
             if message_data['type'] == 'question':
                 question = message_data['question']
-
+                cnt = message_data['questionCount']
+                print('{}. {}'.format(cnt, question))
                 open_browser(question)
 
 
